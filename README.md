@@ -3,7 +3,12 @@ This Spring boot project contains the code for implementing the backend for a UR
 
 ### Database
 This application uses H2 in-memory database, so each time the server restarts, all stored data is lost.
-The credentials for the in-memory database can be found/modified in the application.yaml file stored [here](src/main/resources/application.yaml). 
+The credentials for the in-memory database can be found/modified [here](src/main/resources/application.yaml).
+The database console/UI can be accessed once the application is up at:- 
+
+```
+http://localhost:8080/h2-console/
+```
 
 ### Setup
 
@@ -23,7 +28,7 @@ The credentials for the in-memory database can be found/modified in the applicat
 
 There are two endpoints in this application. They are used for the following creating the new short URL and the other to access the same.
 
-##### Endpoint 1:
+#### Endpoint 1:
 Pass the long URL to generate the short URL.
 Example below.
 
@@ -45,7 +50,7 @@ Response body -
 }
 ```
 
-##### Endpoint 2:
+#### Endpoint 2:
 Pass the short URL to get redirected to the long URL.
 Example below.
 
@@ -64,7 +69,7 @@ Response body -
 ```
 2. If not present
 ```
-Status - 204 NO_CONTENT
+Status - 204 NO CONTENT
 Response body -
 {}
 ```
