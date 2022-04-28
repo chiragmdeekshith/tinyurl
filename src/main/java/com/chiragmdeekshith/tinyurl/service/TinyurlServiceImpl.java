@@ -19,6 +19,8 @@ public class TinyurlServiceImpl implements TinyurlServiceI {
     public TinyurlDto createShortUrl(String originalUrl) {
         TinyurlDto tinyurlDto = new TinyurlDto();
         tinyurlDto.setOriginalUrl(originalUrl);
+        // The following line may cause collision. That case is not handled here.
+        // It can be handled in one of two ways - either by checking before saving, or by maintaining a counter.
         tinyurlDto.setShortUrl(RandomStringUtils.random(6, true, true));
         tinyurlRepository.save(new Tinyurl(tinyurlDto.getOriginalUrl(), tinyurlDto.getShortUrl()));
         return tinyurlDto;

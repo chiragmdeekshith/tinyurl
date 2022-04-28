@@ -11,19 +11,19 @@ import java.net.URI;
 
 
 @RestController
-@RequestMapping(path = "/v1")
+@RequestMapping(path = "/")
 public class TinyurlController {
 
     @Autowired
     private TinyurlServiceI tinyurlService;
 
-    @PostMapping("/create")
+    @PostMapping("/_/create")
     public ResponseEntity<TinyurlDto> createShortUrl(@RequestBody TinyurlDto tinyurlDto) {
         tinyurlDto = tinyurlService.createShortUrl(tinyurlDto.getOriginalUrl());
         return ResponseEntity.status(HttpStatus.OK).body(tinyurlDto);
     }
 
-    @GetMapping("/get/{shortUrl}")
+    @GetMapping("/{shortUrl}")
     public ResponseEntity<Void> getOriginalUrl(@PathVariable("shortUrl") String shortUrl) {
         String originalUrl;
         try {
