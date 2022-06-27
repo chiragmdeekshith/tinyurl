@@ -4,8 +4,7 @@ This Spring boot project contains the code for implementing the backend for a UR
 ### Database
 This application uses H2 in-memory database, so each time the server restarts, all stored data is lost.
 The credentials for the in-memory database can be found/modified [here](src/main/resources/application.yaml).
-The database console/UI can be accessed once the application is up at:- 
-
+The database console/UI can be accessed once the application is up at:-
 ```
 http://localhost:8080/h2-console/
 ```

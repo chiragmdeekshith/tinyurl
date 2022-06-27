@@ -32,3 +32,14 @@ jobs:
         
     - name: Gradle build
       run: ./gradlew build --no-daemon
+
+    - uses: mr-smithers-excellent/docker-build-push@v5
+      name: Build & push Docker image
+      with:
+        image: repo/image
+        tags: v1, latest
+        registry: docker.io
+        dockerfile: Dockerfile
+        buildArgs: [ARG_DB_USERNAME=${{ secrets.ARG_DB_USERNAME }},ARG_DB_PASSWORD=${{ secrets.ARG_DB_PASSWORD }}]
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}

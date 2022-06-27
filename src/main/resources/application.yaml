@@ -1,8 +1,10 @@
 spring:
   datasource:
     url: jdbc:h2:mem:tinyurldb
-    username: tinyurlusername
-    password: tinyurlpassword
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+#    username: tinyurlusername
+#    password: tinyurlpassword
     driverClassName: org.h2.Driver
   h2:
     console.enabled: true
