@@ -5,7 +5,10 @@ spring:
     password: ${DB_PASSWORD:defaultpassword}
     driverClassName: org.h2.Driver
   h2:
-    console.enabled: true
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
   jpa:
     spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
     hibernate.ddl-auto: update
