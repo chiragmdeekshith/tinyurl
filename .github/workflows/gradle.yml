@@ -50,5 +50,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: chiragmdeekshith/tinyurl:latest
-        build-args: ARG_DB_USERNAME=${{ secrets.ARG_DB_USERNAME }},ARG_DB_PASSWORD=${{ secrets.ARG_DB_PASSWORD }}
+        tags: ${{ secrets.DOCKER_USERNAME }}/tinyurl:latest
+        build-args: |
+          ARG_DB_USERNAME=${{ secrets.ARG_DB_USERNAME }}
+          ARG_DB_PASSWORD=${{ secrets.ARG_DB_PASSWORD }}
