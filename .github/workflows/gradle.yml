@@ -33,13 +33,22 @@ jobs:
     - name: Gradle build
       run: ./gradlew build --no-daemon
 
-    - uses: mr-smithers-excellent/docker-build-push@v5
-      name: Build & push Docker image
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v2
       with:
-        image: chiragmdeekshith/tinyurl
-        tags: v1, latest
-        registry: docker.io
-        dockerfile: Dockerfile
-        buildArgs: 'ARG_DB_USERNAME=${{ secrets.ARG_DB_USERNAME }},ARG_DB_PASSWORD=${{ secrets.ARG_DB_PASSWORD }}'
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Build and push
+      uses: docker/build-push-action@v3
+      with:
+        context: .
+        push: true
+        tags: chiragmdeekshith/tinyurl:latest
+        buildArgs: 'ARG_DB_USERNAME=${{ secrets.ARG_DB_USERNAME }},ARG_DB_PASSWORD=${{ secrets.ARG_DB_PASSWORD }}'
